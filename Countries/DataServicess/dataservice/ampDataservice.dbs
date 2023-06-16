@@ -1,0 +1,22 @@
+<data transports="http https" serviceGroup="" serviceNamespace="" name="ampDataservice">
+  <description>this is emp data service</description>
+  <config id="employeeDataSource">
+    <property name="driverClassName">org.postgresql.Driver</property>
+    <property name="url">jdbc:postgresql://localhost:5432/mydb</property>
+    <property name="username">postgres</property>
+    <property name="password">passpass</property>
+  </config>
+  <query id="CSVQueries" useConfig="employeeDataSource">
+    <sql>COPY countries (name, mobile, country)
+         FROM 'D:\data.csv' WITH (FORMAT CSV, HEADER);
+
+         UPDATE countries
+         SET mobilelength = LENGTH(mobile);
+
+         SELECT name, mobile, country, mobilelength FROM countries;</sql>
+  </query>
+  <resource method="GET" path="/GetCsvData">
+    <description>getting CSV DATA</description>
+    <call-query href="CSVQueries" />
+  </resource>
+</data>

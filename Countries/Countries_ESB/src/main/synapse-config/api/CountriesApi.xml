@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/countries" name="CountriesApi" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET">
+        <inSequence>
+            <payloadFactory media-type="xml">
+                <format>
+                    <soap12:Envelope xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+                        <soap12:Body>
+                            <ListOfCountryNamesByName xmlns="http://www.oorsprong.org/websamples.countryinfo"/>
+                        </soap12:Body>
+                    </soap12:Envelope>
+                </format>
+                <args/>
+            </payloadFactory>
+            <header name="To" scope="default" value="urn:ListOfCountryNamesByName "/>
+            <call>
+                <endpoint>
+                    <address format="soap11" uri="http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </address>
+                </endpoint>
+            </call>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

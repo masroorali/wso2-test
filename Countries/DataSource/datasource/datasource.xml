@@ -1,0 +1,12 @@
+<datasource>
+  <name>employeeDataSource</name>
+  <description>this is postgres Data Source</description>
+  <definition type="RDBMS">
+    <configuration>
+      <driverClassName>org.postgresql.Driver</driverClassName>
+      <url>jdbc:postgresql://localhost:5432/mydb</url>
+      <username>postgres</username>
+      <password>passpass</password>
+    </configuration>
+  </definition>
+</datasource>

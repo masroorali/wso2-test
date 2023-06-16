@@ -1,0 +1,11 @@
+---
+key: "CountriesApi-1.0.0"
+name : "CountriesApi"
+displayName : "CountriesApi"
+description: "Sample API"
+version: "1.0.0"
+serviceUrl: "https://{MI_HOST}:{MI_PORT}/countries"
+definitionType: "OAS3"
+securityType: "BASIC"
+mutualSSLEnabled: false
+apiId : "null"
